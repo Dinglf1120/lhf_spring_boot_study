@@ -33,7 +33,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("springboot利用swagger构建api文档")
                 .description("Api接口文档")
-                .termsOfServiceUrl("")
+                .termsOfServiceUrl("https://swagger.io/swagger-ui/")
                 .version("1.0")
                 .build();
     }

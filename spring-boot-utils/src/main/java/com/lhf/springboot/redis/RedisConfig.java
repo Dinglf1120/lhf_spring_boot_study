@@ -102,8 +102,8 @@ public class RedisConfig {
      * @return
      */
     @Bean
-    public RedisTemplate<String, Object> functionDomainRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+    public RedisTemplate<Object, Object> functionDomainRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<Object, Object> redisTemplate = new RedisTemplate<>();
         initDomainRedisTemplate(redisTemplate, redisConnectionFactory);
         return redisTemplate;
     }
@@ -114,7 +114,7 @@ public class RedisConfig {
      * @param redisTemplate
      * @param factory
      */
-    private void initDomainRedisTemplate(RedisTemplate<String, Object> redisTemplate, RedisConnectionFactory factory) {
+    private void initDomainRedisTemplate(RedisTemplate<Object, Object> redisTemplate, RedisConnectionFactory factory) {
         /*
          * 设置 序列化器 .
          * 如果不设置，那么在用实体类(未序列化)进行存储的时候，会提示错误: Failed to serialize object using DefaultSerializer;
@@ -133,7 +133,7 @@ public class RedisConfig {
      * 注入封装RedisTemplate
      */
     @Bean(name = "redisUtil")
-    public RedisUtil redisUtil(RedisTemplate<String, Object> redisTemplate) {
+    public RedisUtil redisUtil(RedisTemplate<Object, Object> redisTemplate) {
         RedisUtil redisUtil = new RedisUtil();
         redisUtil.setRedisTemplate(redisTemplate);
         return redisUtil;

@@ -21,6 +21,13 @@ public class RedisUtil {
     @Autowired
     private RedisTemplate<Object, Object> redisTemplate;
 
+    public RedisTemplate<Object, Object> getRedisTemplate() {
+        return redisTemplate;
+    }
+
+    public void setRedisTemplate(RedisTemplate<Object, Object> redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
 
     public Set<Object> keys(String keys){
         try {
