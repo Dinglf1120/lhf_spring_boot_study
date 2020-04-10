@@ -60,7 +60,7 @@ spring-boot-netty                                     | 整合Netty
 spring-boot-pay                                       | 实现微信、支付宝、银联支付功能（未完）
 spring-boot-quartz                                    | 整合quartz
 spring-boot-rabbitmq                                  | 整合rabbitmq
-spring-boot-rabbitmq                                  | 整合rabbitmq实现发送消息
+spring-boot-rabbitmq1                                 | 整合rabbitmq实现发送消息
 spring-boot-redis                                     | 整合Redis
 spring-boot-redis-crud                                | 整合redis实现crud功能
 spring-boot-redis-template                            | 整合Redis Template实现相关功能
@@ -68,6 +68,8 @@ spring-boot-redis1                                    | 整合Redis
 spring-boot-redisson                                  | 整合使用Redisson
 spring-boot-resttemplate                              | 整合RestTemplate 
 spring-boot-rocketmq                                  | 整合RocketMQ
+spring-boot-rocketmq1                                 | 整合RocketMQ
+spring-boot-runner                                    | 实现启动项目时加载初始化数据              
 spring-boot-schedule                                  | 整合schedule实现定时任务
 spring-boot-schedule-task                             | 读取数据库Cron表达式实现定时任务
 spring-boot-shiro-jwt                                 | 整合shiro和JWT
