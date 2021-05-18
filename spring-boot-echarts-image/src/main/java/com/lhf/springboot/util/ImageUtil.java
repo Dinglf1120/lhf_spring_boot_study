@@ -1,14 +1,12 @@
 package com.lhf.springboot.util;
 
 import org.jboss.logging.Logger;
+import sun.misc.BASE64Decoder;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 /**
  * @ClassName: ImageUtil
@@ -32,9 +30,20 @@ public class ImageUtil {
         logger.info("入参logoText = " + logoText + " , srcImgPath = " + srcImgPath + " , newImagePath = " + newImagePath);
         InputStream is = null;
         OutputStream os = null;
+
+        /*
+        String binPath=System.getProperty("user.dir");
+        String filePath=binPath.substring(0, binPath.lastIndexOf("\\"))+File.separator+"webapps"+File.separator+"项目名"+File.separator+"image"+File.separator+"图片名";
+        System.out.println("binPath = " + binPath);
+        System.out.println("filePath = " + filePath);
+        String imgPath = binPath + "\\image\\";
+        System.out.println("imgPath = " + imgPath);
+       */
+
         try {
             // 1、源图片
             Image srcImg = ImageIO.read(new File(srcImgPath));
+            logger.info("srcImg = " + srcImg);
             BufferedImage buffImg = new BufferedImage(srcImg.getWidth(null),srcImg.getHeight(null), BufferedImage.TYPE_INT_RGB);
             // 2、得到画笔对象
             Graphics2D g = buffImg.createGraphics();
@@ -73,6 +82,22 @@ public class ImageUtil {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+
+    public static void generateImage(String base64, String path) throws IOException {
+        BASE64Decoder decoder = new BASE64Decoder();
+        try (OutputStream out = new FileOutputStream(path)){
+            // 解密
+            byte[] b = decoder.decodeBuffer(base64);
+            for (int i = 0; i < b.length; ++i) {
+                if (b[i] < 0) {
+                    b[i] += 256;
+                }
+            }
+            out.write(b);
+            out.flush();
         }
     }
 

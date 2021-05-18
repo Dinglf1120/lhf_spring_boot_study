@@ -30,7 +30,7 @@ import java.util.List;
  * @Description: 使用模板生成柱状图和折线图以及饼图
  * @Date: 2019/9/26 14:23
  */
-@Api(value = "Freemarker模板生成Echarts图表Api接口", tags = "模板生成图表Api")
+@Api(value = "Freemarker模板生成Echarts图表Api接口", tags = "模板生成图表Api-1")
 @RequestMapping("/template")
 @RestController
 public class EchartsTemplateController {
@@ -73,6 +73,7 @@ public class EchartsTemplateController {
             datas.put("values", JSON.toJSONString(barValue));
 
             String option = FreemarkerUtil.generateString("barOption.ftl", temPath, datas);
+
             System.out.println("option = " + option);
 
             // 根据option参数

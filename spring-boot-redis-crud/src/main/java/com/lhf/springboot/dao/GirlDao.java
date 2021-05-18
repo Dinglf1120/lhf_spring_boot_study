@@ -3,6 +3,7 @@ package com.lhf.springboot.dao;
 import com.lhf.springboot.pojo.Girl;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName: GirlDao
@@ -42,6 +43,8 @@ public interface GirlDao {
      * @return
      */
     List<Girl> findByGirlList();
+
+    void addKeyMap(String key, Map map);
 
 
 }

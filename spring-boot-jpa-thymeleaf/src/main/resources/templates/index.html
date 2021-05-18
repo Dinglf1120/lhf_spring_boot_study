@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common::head('首页')">
+<meta charset="UTF-8">
+</head>
+<body>
+
+<div class="table-responsive" style="overflow: hidden">
+    <div class="row" style="margin-right: 0;margin-left: 0">
+        <form id="fml" action="" method="get">
+            <div class="row" >
+                <div class="input-group col-sm-4 " style="margin-left: 30px;float:left;">
+                    <input type="text" class="form-control" name="keywords" id="keywords" placeholder="请输入课程名称" th:value="${managerid}" style="border:1px solid #2E9938">
+                    <input type="hidden" name="pageNo" id="pageNo" th:value="${pageNo}"/>
+                    <span class="input-group-btn" >
+                        <button class="btn btn-primary" type="submit" id="suosuo">搜索</button>
+                    </span>
+                </div>
+                <div class="col-sm-4" style="float:left">
+                    <a data-target="#edit" data-toggle="modal" type="button" class="btn btn-primary btn-xs-2 addBtn" style="margin-left:50px;">+ 添加</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <table class="table table-striped" style="text-align: center;table-layout:fixed;" id="tableOne">
+        <thead>
+        <tr class="table_tr">
+            <th style="width:45px;text-align: center;">序号</th>
+            <th style="width:50px;text-align: center;">文章名称</th>
+            <th style="width:50px;text-align: center;">文章作者</th>
+            <th style="width:120px;text-align: center;">文章简介</th>
+            <th style="width:120px;text-align: center;">文章内容</th>
+            <th style="width:80px;text-align: center;">发布时间</th>
+            <th style="width:80px;text-align: center;">修改时间</th>
+            <th style="width:80px;text-align: center;">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tm,tmStat:${listAll}">
+            <td th:text="${tmStat.count}"></td>
+            <td class="yin" th:text="${tm.name}"></td>
+            <td class="yin" th:text="${tm.author}"></td>
+            <td class="yin dates" th:text="${tm.remark}"></td>
+            <td class="yin" th:text="${tm.des}"></td>
+            <td class="yin dates" th:text="${#strings.substring(tm.createTime,0,10)}"></td>
+            <td class="yin dates" th:text="${#strings.substring(tm.modifyTime,0,10)}"></td>
+            <td class="text footable-visible footable-last-column">
+                <div class="btn-group group-btns" style="margin-left: 42px;">
+                    <a th:id="${tm.id}" class="btn btn-primary btn-xs editBtn" data-target="#edit" data-toggle="modal" style="margin-right:5px;">编辑</a>
+                    <a class="btn btn-danger btn-xs del deleteBtn" data-target="#delete" data-toggle="modal">删除</a>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!--分页-->
+    <div th:replace="common::btn_pager"></div>
+</div>
+
+<!-- 模态弹框-->
+
+
+
+<div th:replace="model/deleteModel::deleteModel"></div>
+
+<div th:replace="model/editModel::editModel"></div>
+
+<!-- 模态弹框 结束-->
+
+<!-- 隐藏域 -->
+
+<input id="result" type="hidden" th:value="${Result}">
+
+<!-- 隐藏域 结束 -->
+
+<div th:replace="common::scripts"></div>
+
+<script language="javascript">
+    function changeColor(){
+        var color="#f00|容#0f0|#00f|#880|#808|#088|yellow|green|blue|gray";
+        color=color.split("|");
+        document.getElementById("blink").style.color=color[parseInt(Math.random() * color.length)];
+    }
+    setInterval("changeColor()",200);
+
+    //时间选择器
+    $.fn.datepicker.dates['cn'] = {
+        days : [ "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" ],
+        daysShort : [ "周日", "周一", "周二", "周三", "周四", "周五", "周六" ],
+        daysMin : [ "日", "一", "二", "三", "四", "五", "六" ],
+        months : [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月",
+            "11月", "12月" ],
+        monthsShort : [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10",
+            "11", "12" ],
+        today : "今天",
+        clear : "清除",
+        format : "yyyy-mm-dd",
+
+        titleFormat : "yyyy MM", /* Leverages same syntax as 'format' */
+        weekStart : 1
+    };
+
+    // 引入时间选择器
+    $('.date1').datepicker({
+        format: 'yyyy-mm-dd',
+        language: 'cn',
+        keyboardNavigation: false,
+        forceParse: false,
+        autoclose: true
+    });
+
+    if($("#result").val() != "查询成功！"){
+        alert($("#result").val())
+        location.href = "/"
+    }
+    //点击编辑按钮将行的值传入列表
+    $(".editBtn").click(function(){
+        var tr = $(this).parent().parent().parent();
+        $("input[name='id']").val($(this).attr("id"));
+        tr.children("td").each(function(index){
+            if(index == 1){
+                $("input[name='name']").val($(this).text())
+            }else if(index == 2){
+                $("input[name='author']").val($(this).text())
+            } else if(index == 3){
+                $("input[name='remark']").val($(this).text())
+            }else if(index == 4){
+                $("input[name='des']").val($(this).text())
+            }else if(index == 5){
+                $("input[name='createTime']").val($(this).text())
+            }/*else if(index == 7){
+                $("input[name='modifyTime']").val($(this).text())
+            }*/
+
+        })
+    })
+
+    $(".deleteBtn").click(function() {
+        $("input[name='id']").val($(this).prev().attr("id"));
+    })
+
+    //点击添加清空列表
+    $(".addBtn").click(function(){
+        $("input[name='id']").val("");
+        $("input[name='name']").val("")
+        $("input[name='author']").val("")
+        $("input[name='remark']").val("")
+        $("input[name='des']").val("")
+        $("input[name='createTime']").val("")
+        /*$("input[name='modifyTime']").val("")*/
+    })
+</script>
+
+</body>
+</html>

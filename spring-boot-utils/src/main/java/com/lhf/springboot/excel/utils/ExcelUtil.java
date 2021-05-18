@@ -17,10 +17,13 @@ import java.util.*;
 /**
  * @ClassName: ExcelUtil
  * @Author: liuhefei
- * @Description: TODD
+ * @Description: 由于poi-ooxml版本与本项目的其他版本冲突，顾注释此代码，需要使用的时候，打开注释，修改poi-ooxml版本为4.1.0即可
+ *
+ * 要使用poi-ooxml 4.1.0版本
+ *
  * @Date: 2019/11/22 15:01
  */
-
+/*
 public class ExcelUtil {
     public ExcelUtil() {
     }
@@ -274,3 +277,4 @@ public class ExcelUtil {
     public static void main(String[] args) throws IOException, InvalidFormatException {
     }
 }
+*/

@@ -1,7 +1,7 @@
 package com.lhf.springboot.controller;
 
 import com.lhf.springboot.exception.BizException;
-import com.lhf.springboot.pojo.User;
+import com.lhf.springboot.pojo.Users;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,7 @@ public class UserController {
 
     @ApiOperation("添加用户")
     @PostMapping("/user")
-    public boolean insert(@RequestBody User user) {
+    public boolean insert(@RequestBody Users user) {
         System.out.println("开始新增...");
         //如果姓名为空就手动抛出一个自定义的异常！
         if(user.getName()==null){
@@ -33,7 +33,7 @@ public class UserController {
 
     @ApiOperation("更新用户")
     @PutMapping("/user")
-    public boolean update(@RequestBody User user) {
+    public boolean update(@RequestBody Users user) {
         System.out.println("开始更新...");
         //这里故意造成一个空指针的异常，并且不进行处理
         String str=null;
@@ -43,7 +43,7 @@ public class UserController {
 
     @ApiOperation("删除用户")
     @DeleteMapping("/user")
-    public boolean delete(@RequestBody User user)  {
+    public boolean delete(@RequestBody Users user)  {
         System.out.println("开始删除...");
         //这里故意造成一个异常，并且不进行处理
         Integer.parseInt("abc123");
@@ -52,10 +52,10 @@ public class UserController {
 
     @ApiOperation("查询用户")
     @GetMapping("/user")
-    public List<User> findByUser(User user) {
+    public List<Users> findByUser(Users user) {
         System.out.println("开始查询...");
-        List<User> userList =new ArrayList<>();
-        User user2=new User();
+        List<Users> userList =new ArrayList<>();
+        Users user2=new Users();
         user2.setId(1L);
         user2.setName("小三");
         user2.setAge(18);

@@ -63,6 +63,7 @@
     "series": [{
         "name": "${legend}",
         "type": "bar",
+        "barWidth": "30%",
         "label": {
             "normal": {
                 "color": "red",

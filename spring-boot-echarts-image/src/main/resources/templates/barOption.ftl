@@ -57,6 +57,7 @@
         "name": "${legend}",
         "data": ${values},
         "type": "bar",
+        "barWidth": "30%",
         "label": {
             "normal": {
                 "color": "green",

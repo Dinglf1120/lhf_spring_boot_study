@@ -1,5 +1,6 @@
 package com.lhf.springboot.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.lhf.springboot.pojo.Girl;
 import com.lhf.springboot.service.GirlService;
 import io.swagger.annotations.Api;
@@ -9,7 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName: GirlController
@@ -25,6 +28,19 @@ public class GirlController {
 
     @Autowired
     private GirlService girlService;
+
+    @ApiOperation("添加女孩信息")
+    @PostMapping("/addKey")
+    public boolean addKayMap(){
+        logger.info("开始添加女孩信息....");
+        Map<String, String> map = new HashMap<>();
+        map.put("a_syetem", "dompet");
+        map.put("b_syetem", "dompet_second");
+        map.put("x_syetem", "api_loansuper");
+
+        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(map);
+        return girlService.addKeyMap("dbName", jsonObject);
+    }
 
     @ApiOperation("添加女孩信息")
     @PostMapping("/add")

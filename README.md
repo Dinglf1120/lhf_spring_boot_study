@@ -25,12 +25,15 @@ spring-boot-echarts-image                             | 整合Echarts生成图�
 spring-boot-echarts-json                              | 整合Echarts生成图表，并导出图片
 spring-boot-echarts-json-image                        | 整合Echarts生成图表
 spring-boot-ehcache                                   | 集成Ehcache实现缓存功能
+spring-boot-elastic-job-demo                          | 整合Elastic Job实现任务调度
 spring-boot-elasticsearch                             | 整合Elasticsearch，实现增删改查
 spring-boot-elasticsearch1                            | 整合elasticsearch，实现搜索查询相关功能
 spring-boot-elasticsearch2                            | 整合elasticsearch，实现搜索查询相关功能
 spring-boot-elasticsearch3                            | 整合elasticsearch，实现增删改查
 spring-boot-email                                     | 实现发送邮件功能
 spring-boot-excel                                     | 实现数据表导出excel报表
+spring-boot-excel-mysql                               | SpringBoot实现excel数据导入mysql
+spring-boot-excel1                                    | SpringBoot导出excel数据
 spring-boot-exception                                 | 实现全局异常的统一处理
 spring-boot-fastdfs                                   | 整合实现fastdfs文件操作
 spring-boot-fileupload                                | 实现文件上传功能
@@ -38,6 +41,7 @@ spring-boot-freemarker                                | 整合Freemarker
 spring-boot-freemarker1                               | 整合Freemarker
 spring-boot-id-generator                              | 分布式id生成器
 spring-boot-jpa-curd                                  | 整合jpa，实现增删改查
+spring-boot-jpa-thymeleaf                             | springboot+jpa+thymeleaf实现信息增删改查功能
 spring-boot-json                                      | 处理json数据
 spring-boot-kafka                                     | 整合kafka，实现消息订阅发送功能
 spring-boot-kafka-storm                               | 整合Kafka和Storm
@@ -61,8 +65,11 @@ spring-boot-pay                                       | 实现微信、支付宝
 spring-boot-quartz                                    | 整合quartz
 spring-boot-rabbitmq                                  | 整合rabbitmq
 spring-boot-rabbitmq1                                 | 整合rabbitmq实现发送消息
+spring-boot-rabbitmq2                                 | springboot + rabbitmq发送邮件
+spring-boot-redirect                                  | 几种重定向（redirect）方法
 spring-boot-redis                                     | 整合Redis
 spring-boot-redis-crud                                | 整合redis实现crud功能
+spring-boot-redis-idempotent                          | 整合redis实现幂等操作，拦截无效请求
 spring-boot-redis-template                            | 整合Redis Template实现相关功能
 spring-boot-redis1                                    | 整合Redis
 spring-boot-redisson                                  | 整合使用Redisson
@@ -87,7 +94,14 @@ spring-boot-value                                     | 注解@value的用法总
 spring-boot-verification-code                         | 整合生成验证码
 spring-boot-vue                                       | 整合Vue+Element-UI实现前后端分离
 spring-boot-web                                       | SpringBoot web实现
-spring-boot-web-thymeleaf                             | SpringBoot web整合thymeleaf模板
+spring-boot-web-thymeleaf                             | SpringBoot web整合thymeleaf模板             
+spring-boot-websocket                                 | Springboot整合websocket                  
+spring-boot-xxljob                                    | xxl-job定时调度任务SpringBoot版
+
+
+
+
+
 
 
 ###项目参考资源：           
@@ -97,7 +111,8 @@ spring-boot-web-thymeleaf                             | SpringBoot web整合thym
 （4）https://github.com/ityouknow/spring-boot-examples                           
 （5）https://github.com/SpringForAll                     
 （6）https://github.com/spring-projects      
-（7）https://github.com/xkcoding/spring-boot-demo                          
+（7）https://github.com/xkcoding/spring-boot-demo       
+（8）https://github.com/javastacks/spring-boot-best-practice
 
 
 ###后续        

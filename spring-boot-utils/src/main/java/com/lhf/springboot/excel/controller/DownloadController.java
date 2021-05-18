@@ -1,6 +1,6 @@
 package com.lhf.springboot.excel.controller;
 
-import com.lhf.springboot.excel.utils.ExcelUtil;
+//import com.lhf.springboot.excel.utils.ExcelUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -37,7 +37,10 @@ public class DownloadController {
             List<Map<String,String>> data = new ArrayList<>();
             data.add(map);
             List<Map> result = data.stream().collect(Collectors.toList());
-            outputStream = ExcelUtil.exportTableDataExcel(result);
+
+            //记得打开这里的注释
+            //outputStream = ExcelUtil.exportTableDataExcel(result);
+
             response.setHeader("Content-Disposition", "attachment; filename="+ URLEncoder.encode(fileName+".xlsx","UTF-8")+"" );
             response.setContentType("multipart/form-data;charset=UTF-8");
             Integer contentLength = outputStream.size();

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>上传文件</title>
+    <link th:href="@{/css/bootstrap.css}" href="../static/css/bootstrap.css" rel="stylesheet"/>
+</head>
+<body>
+<form class="form-horizontal" id="form_table" action="#" th:action="@{/api/batchImport}" enctype="multipart/form-data" method="post">
+    <input class="form-input" type="file" name="filename">
+    <br/>
+    <div class="input-group col-lg-3">
+        <span class="input-group-addon" id="sizing-addon1">用户名</span>
+        <input type="text" class="form-control" placeholder="导入者" name="username">
+    </div>
+    <br/>
+    <button type="submit" class="btn">开始导入</button>
+</form>
+</body>
+</html>

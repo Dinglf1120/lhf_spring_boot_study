@@ -1,5 +1,8 @@
 #使用模板生成Echarts图片
 
+https://gitee.com/lshyunjin/publicProject           
+https://gitee.com/lshyunjin/publicProject/tree/master/pdf-convert                      
+
 windows环境
 1. 首先需要解压缩安装tool目录下的两个插件
 2. 启动cmd命令窗口，命令行输入<phantomjs路径> <EChartsConvert路径> -s -p <服务端口号>        
@@ -14,14 +17,16 @@ windows环境
 命令：
 D:\>cd D:\softpack\echarts\phantomjs-2.1.1-windows\bin
 
-D:\softpack\echarts\phantomjs-2.1.1-windows\bin>phantomjs D:\softpack\echarts\echartsconvert\echarts-convert.js -s -p 6666
+D:\softpack\echarts\phantomjs-2.1.1-windows\bin>phantomjs D:\softpack\echarts\echartsconvert\echarts-convert.js -s -p 6668
 
-DEBUG模式：phantomjs --debug=yes D:\softpack\echarts\echartsconvert\echarts-convert.js -s -p 6666
+DEBUG模式：phantomjs --debug=yes D:\softpack\echarts\echartsconvert\echarts-convert.js -s -p 6668
 
 两种方式Echarts图片（柱状图/折线图）：     
 第一种：直接利用Java代码结合插件生成Echarts图片     
 第二种：利用Freemarker模板填充数据，结合插件生成Echarts图片，以及直接生成Html页面     
 
+
+echarts-util-one-base64.js 返回图片的base64编码
 
 ------------------------------------------------------------------------------------
 生成饼图:
@@ -45,12 +50,21 @@ D:\softpack\echarts\phantomjs-2.1.1-windows\bin>phantomjs D:\softpack\echarts\ph
     ```     
     这里的option可以通过Java代码生成，也可以通过Freemarker模板生成.    
 4. 在使用的时候，记得安装配置插件，参考前面的说明，并且注意端口号      
-5. 利用echarts-pie.js来生成柱状图、折线图、饼图时，就不需要使用phantomjs-2.1.1-windows.zip 这个插件了     
+5. 利用echarts-pie.js来生成柱状图、折线图、饼图时，就不需要使用phantomjs-2.1.1-windows.zip 这个插件了  
+6. 利用echarts-util.js来生成柱状图、折线图、饼图时，就不需要使用phantomjs-2.1.1-windows.zip 这个插件了      
+7. 要为柱状图生成渐变色，需要通过barOption.ftl模板来实现，在series块下，加入："itemStyle": "__itemStyle"  ,然后启动服务：      
+   phantomjs D:\softpack\echarts\phantomjs-2.1.1-windows\bin\echarts-util-one.js -s -p 8989         
+   即可生成渐变色。        
 
 命令：phantomjs.exe --debug=yes my.js -s -p 6668
 
 ---------------------------------------------------------------------
 模板barOption1.ftl 对应echarts-util-bar.js插件，用于生成渐变色柱状图
 
+生成渐变柱状图:
+命令：
+D:\>cd D:\softpack\echarts\phantomjs-2.1.1-windows\bin
+
+D:\softpack\echarts\phantomjs-2.1.1-windows\bin>phantomjs D:\softpack\echarts\phantomjs-2.1.1-windows\bin\echarts-util-one.js -s -p 6668
 
 

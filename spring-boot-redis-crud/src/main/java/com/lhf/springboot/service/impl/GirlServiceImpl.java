@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ClassName: GirlServiceImpl
@@ -23,6 +24,18 @@ public class GirlServiceImpl implements GirlService {
     @Autowired
     private GirlDao girlDao;
 
+
+    @Override
+    public boolean addKeyMap(String key, Map map) {
+        boolean flag = false;
+        try{
+            girlDao.addKeyMap(key, map);
+            flag = true;
+        }catch (Exception e){
+            logger.error("添加失败！" , e.getMessage());
+        }
+        return flag;
+    }
 
     @Override
     public boolean addGirl(Girl girl) {

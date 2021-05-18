@@ -1,0 +1,154 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- 模态弹修改 -->
+<div class="modal fade" id="edit" th:fragment="editModel">
+	<div class="modal-dialog" >
+		<div class="modal-content message_align" >
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">修改</h4>
+			</div>
+			<div class="modal-body">
+
+				<form id="defaultForm" action="/save" method="POST" class="form-horizontal">
+
+					<div class="row">
+						<input name="id" type="hidden" class="form-control" required>
+						<div class="form-group">
+							<label class="col-lg-2 control-label">文章名称</label>
+							<div class="col-lg-10">
+								<input name="name" type="text" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label">文章作者</label>
+							<div class="col-lg-10">
+								<input name="author" type="text" class="form-control" required>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label">文章简介</label>
+							<div class="col-lg-10">
+								<input name="remark" type="text" class="form-control" required>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-lg-2 control-label">文章内容</label>
+							<div class="col-lg-10">
+								<input name="des" type="text" class="form-control" required>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="col-lg-2 control-label">添加时间</label>
+							<div class="col-lg-10">
+								<div class="input-group date date1">
+									<span class="input-group-addon" style="border: 1px solid #ccc;">
+										<i class="fa fa-calendar"></i>
+									</span>
+									<input name="createTime" readonly="readonly" type="text" class="form-control" required>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-lg-2 control-label">更新时间</label>
+							<div class="col-lg-10">
+								<div class="input-group date date1">
+									<span class="input-group-addon" style="border: 1px solid #ccc;">
+										<i class="fa fa-calendar"></i>
+									</span>
+									<input name="modifyTime" readonly="readonly" type="text" class="form-control" required>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="submit" class="btn btn-default">保存</button>
+					</div>
+
+			    </form>
+		    </div>
+		<!-- /.modal-content -->
+	   </div>
+	<!-- /.modal-dialog -->
+	</div>
+<!-- /.modal -->
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		/**
+		 * 下面是进行插件初始化
+		 * 你只需传入相应的键值对
+		 * */
+		$('#defaultForm').bootstrapValidator({
+			message: 'This value is not valid',
+			feedbackIcons: {/*输入框不同状态，显示图片的样式*/
+				valid: 'glyphicon glyphicon-ok',
+				invalid: 'glyphicon glyphicon-remove',
+				validating: 'glyphicon glyphicon-refresh'
+			},
+			fields: {/*验证*/
+				name: {/*键名username和input name值对应*/
+					message: '不能为空',
+					validators: {
+						notEmpty: {/*非空提示*/
+							message: '文章名称不能为空'
+						},
+						/*长度提示*/
+						/*stringLength: {
+							min: 6,
+							max: 30,
+							message: '文章名称长度必须在6到30之间'
+						}/*最后一个没有逗号*/
+					}
+				},
+				author: {
+				   message: '不能为空',
+				   validators: {
+				   	  notEmpty:{
+				   	  	 message: '作者名不能为空'
+					  }
+				   }
+				},
+				remark: {
+					message:'不能为空',
+					validators: {
+						notEmpty: {
+							message: '文件简介不能为空'
+						},
+						/*stringLength: {
+							min: 6,
+							max: 30,
+							message: '用户名长度必须在6到30之间'
+						}*/
+					}
+				},
+				des: {
+					message: '不能为空',
+					validators: {
+						notEmpty:{
+							message: '文章内容不能为空'
+						}
+					}
+				}
+				/*email: {
+					validators: {
+						notEmpty: {
+							message: 'The email address is required and can\'t be empty'
+						},
+						emailAddress: {
+							message: 'The input is not a valid email address'
+						}
+					}
+				}*/
+			}
+		});
+	});
+</script>

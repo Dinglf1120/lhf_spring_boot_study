@@ -95,4 +95,29 @@ public class FileUtil {
     }
 
 
+    /**
+     * FileWritter写入文件
+     * FileWritter, 字符流写入字符到文件。默认情况下，它会使用新的内容取代所有现有的内容，
+     * 然而，当指定一个true （布尔）值作为FileWritter构造函数的第二个参数，它会保留现有的内容，并追加新内容在文件的末尾。
+     * @param finalFilePath  文件路径+文件名   D:\\test.txt
+     * @param jsonStr   要写入文件的内容
+     * @param bool true 追加  false 覆盖旧数据
+     */
+    public static void writeToFile(String finalFilePath, String jsonStr, boolean bool) {
+        try{
+            //创建文件
+            File file = new File(finalFilePath);
+            if(!file.exists()){
+                file.createNewFile();   //文件如果不存在，就创建文件
+            }
+
+            FileWriter writer = new FileWriter(finalFilePath, bool);
+            writer.write(jsonStr);
+            writer.close();
+            System.out.println("文件写入成功");
+
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }

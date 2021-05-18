@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * @ClassName: EchartsController
  * @Author: liuhefei
- * @Description: 利用Java代码生成柱状图和折线图
+ * @Description: 利用Java代码生成柱状图和折线图,不能生成饼图
  * @Date: 2019/9/26 10:37
  */
 @Api(value = "生成Echarts图表API接口", tags = "Echarts图表")
@@ -69,6 +69,7 @@ public class EchartsController {
         try {
             // 根据option参数发起请求，转换为base64
             String base64 =  EchartsUtil.generateEchartsBase64(optionStr, requestUrl);
+            logger.info("base64 = " + base64);
 
             long nowStr = Calendar.getInstance().getTimeInMillis();
             //图片名
@@ -161,7 +162,7 @@ public class EchartsController {
     @ApiOperation(value = "生成饼图")
     @RequestMapping(value = "/pie", method = RequestMethod.POST)
     public JsonResult createPie(@RequestBody PieData pieData){
-
+        logger.info("入参pieData = " + pieData);
         GsonOption option = (GsonOption) EchartPie.createPie(pieData);
         String optionStr = JSONObject.toJSONString(option);
         if(optionStr == null || "".equals(optionStr)){
@@ -186,8 +187,11 @@ public class EchartsController {
             js.setFile(imgUrlPath+imageName);
             PhantomJSUtil.phantomJS(requestUrl, JSON.parseObject(JSON.toJSONString(js)));
 
-            oldFilePath = imgUrlPath+imageName;
-            newFilePath = imgUrlPath+"new"+imageName;
+            //oldFilePath = imgUrl+imageName;
+            //newFilePath = imgUrl+"new"+imageName;
+
+            oldFilePath = imgUrl+imageName;
+            newFilePath = imgUrl+"new"+imageName;
 
             logger.info("oldFilePath = " + oldFilePath);
             logger.info("newFilePath = " + newFilePath);

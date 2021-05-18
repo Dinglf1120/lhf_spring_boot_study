@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -59,5 +60,10 @@ public class GirlDaoImpl implements GirlDao {
         }
 
         return girlList;
+    }
+
+    @Override
+    public void addKeyMap(String key, Map map) {
+        redisUtil.set(key, map);
     }
 }

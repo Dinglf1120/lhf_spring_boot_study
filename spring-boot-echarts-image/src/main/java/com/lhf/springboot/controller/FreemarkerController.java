@@ -28,7 +28,7 @@ import java.util.List;
  * @Description: 使用phantomjs-2.1.1-windows + echarts-util-bar.js生成图片
  * @Date: 2019/10/24 19:29
  */
-@Api(value = "Freemarker模板生成Echarts图表Api接口", tags = "模板生成图表Api")
+@Api(value = "Freemarker模板生成Echarts图表Api接口", tags = "模板生成图表Api-2")
 @RequestMapping("/tpl")
 @RestController
 public class FreemarkerController {
@@ -72,8 +72,10 @@ public class FreemarkerController {
             datas.put("values", JSON.toJSONString(barValue));
 
 
-            //String option = FreemarkerUtil.generateString("barOption.ftl", temPath, datas);
-            String option = FreemarkerUtil.generateString("barOption1.ftl", temPath, datas);  //带渐变色
+            //String option = FreemarkerUtil.generateString("barOption2.ftl", temPath, datas);
+            String option = FreemarkerUtil.generateString("barOption3.ftl", temPath, datas);  //带渐变色
+            //String option = "{\"title\":{\"text\":\"角色：组织负责人组织范围: 全范围OrganizationID: 00033574 \",\"textStyle\":{\"color\":\"#7f7f7f\",\"fontSize\":12,\"fontWeight\":\"bolder\"}},\"tooltip\":{\"formatter\":\"{a}<br/>{b} : {c}\",\"show\":true},\"legend\":{\"textStyle\":{\"color\":\"#333333\",\"fontSize\":15,\"fontWeight\":\"bolder\"},\"data\":[\"数据平台中心 - 年龄画像\"]},\"xAxis\":[{\"type\":\"category\",\"axisLine\":{\"lineStyle\":{\"color\":\"#7F7F7F\",\"width\":\"3\"}},\"axisLabel\":{\"show\":true,\"textStyle\":{\"fontSize\":15,\"fontWeight\":\"bolder\",\"color\":\"#7F7F7F\"}},\"data\":[\"25岁以下\",\"25岁-30岁\",\"30-40岁\",\"40-50岁\"]}],\"yAxis\":[{\"type\":\"value\",\"axisLine\":{\"lineStyle\":{\"color\":\"#7F7F7F\",\"width\":\"3\"}},\"axisLabel\":{\"show\":true,\"textStyle\":{\"fontSize\":15,\"fontWeight\":\"bolder\",\"color\":\"#7F7F7F\"}},\"axisTick\":{\"show\":true}}],\"series\":[{\"name\":\"数据平台中心 - 年龄画像\",\"type\":\"bar\",\"barWidth\":\"30%\",\"color\":\"red\",\"label\":{\"normal\":{\"color\":\"#3370FE\",\"show\":true,\"position\":\"top\",\"textStyle\":{\"color\":\"#7F7F7F\",\"fontSize\":15,\"fontWeight\":\"bolder\"}}},\"data\":[3,1,8,2]}]}";
+
             System.out.println("option = " + option);
 
             long nowStr = Calendar.getInstance().getTimeInMillis();

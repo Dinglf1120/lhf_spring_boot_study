@@ -10,6 +10,7 @@ public class SpringBootExcelApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringBootExcelApplication.class, args);
+        System.out.println("访问地址：http://localhost:8098/api/exportProduct");
     }
 
 }
