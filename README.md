@@ -35,6 +35,7 @@ spring-boot-excel                                     | 实现数据表导出exc
 spring-boot-excel-mysql                               | SpringBoot实现excel数据导入mysql
 spring-boot-excel1                                    | SpringBoot导出excel数据
 spring-boot-exception                                 | 实现全局异常的统一处理
+spring-boot-executor                                  | 线程池使用                
 spring-boot-fastdfs                                   | 整合实现fastdfs文件操作
 spring-boot-fileupload                                | 实现文件上传功能
 spring-boot-freemarker                                | 整合Freemarker
@@ -85,6 +86,7 @@ spring-boot-swagger                                   | 整合swagger文档
 spring-boot-task                                      | 使用注解实现线程池的配置和自定义线程的使用示例
 spring-boot-task-job                                  | 整合实现多种定时任务
 spring-boot-tesseract                                 | Tesseract快速实现图片内容转文字
+spring-boot-threadpool                                | SpringBoot整合实现线程池ThreadPoolExecutor          
 spring-boot-thymeleaf                                 | 整合thymeleaf模板
 spring-boot-thymeleaf1                                | 整合thymeleaf模板
 spring-boot-transactional                             | transactional事务操作实例

@@ -1,0 +1,4 @@
+#SpringBoot整合实现线程池ThreadPoolExecutor
+
+用法：  在Service层的实现类上加上注解 @Async("asyncServiceExecutor") 即可开启实现多线程
+将Service层的服务异步化，在executeAsync()方法上增加注解@Async("asyncServiceExecutor")，asyncServiceExecutor方法是前面ExecutorConfig.java中的方法名，表明executeAsync方法进入的线程池是asyncServiceExecutor方法创建的。
