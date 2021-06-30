@@ -3,6 +3,7 @@ package com.lhf.springboot.number;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 /**
  * @ClassName: CommonUtil
@@ -30,6 +31,32 @@ public class CommonUtil {
         }
         return big3;
     }
+
+
+    /**
+     * 除法
+     * @param a
+     * @param b
+     * @return
+     */
+    public static double divide(Integer a, Integer b){
+        double value = new BigDecimal((float)a/b).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        return value;
+    }
+
+    /**
+     * 除法
+     * @param a
+     * @param b
+     * @return
+     */
+    public static String divideStr(Integer a, Integer b){
+        DecimalFormat df = new DecimalFormat("0.00");//格式化小数
+        String num = df.format((float)a/b);//返回的是String类型
+        return num;
+    }
+
+
 
     /**
      * 乘法

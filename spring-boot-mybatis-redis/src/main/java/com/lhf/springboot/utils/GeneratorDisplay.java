@@ -1,4 +1,4 @@
-package com.lhf.springboot.springbootmybatis;
+package com.lhf.springboot.utils;
 
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
@@ -10,8 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * mybatis逆向工程生成代码
- * 执行这个类，可以自动生成对应的代码，需要配合generatorConfig.xml文件
+ * 用于自动生成实体类和mapper文件以及对应的xml文件
+ * 1. 修改pom.xml文件的tk.mybatis，版本切换为1.2.4
+ * 2. 刷新maven拉取对应版本的jar包
+ * 3. 配置generatorConfig.xml文件的tableName表名（你新增的实体数据表名字）
+ * 4. 执行这个类的main方法进行自动生成代码
  */
 public class GeneratorDisplay {
 
@@ -20,7 +23,7 @@ public class GeneratorDisplay {
 		List<String> warnings = new ArrayList<String>();
 		boolean overwrite = true;
 		//指定 逆向工程配置文件
-		File configFile = new File("generatorConfig.xml");
+		File configFile = new File("spring-boot-mybatis-redis/generatorConfig.xml");
 		ConfigurationParser cp = new ConfigurationParser(warnings);
 		Configuration config = cp.parseConfiguration(configFile);
 		DefaultShellCallback callback = new DefaultShellCallback(overwrite);
